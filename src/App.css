@@ -1,5 +1,13 @@
 html{
-  background-color: #262626;
+  background: #1e5799;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(25%,#a50f15), color-stop(75%,#fb6a4a));
+  background: -webkit-linear-gradient(45deg,  #a50f15 25%, #fb6a4a 75%);
+  background:    -moz-linear-gradient(45deg,  #a50f15 25%, #fb6a4a 75%);
+  background:     -ms-linear-gradient(45deg,  #a50f15 25%, #fb6a4a 75%);
+  background:      -o-linear-gradient(45deg,  #a50f15 25%, #fb6a4a 75%);
+  background:         linear-gradient(45deg, #a50f15 25%, #fb6a4a 75%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a50f15', endColorstr='#fb6a4a',GradientType=0 );
+  background-attachment: fixed;
   text-align: center;
   padding: 0;
   font: helvetica
@@ -47,3 +55,4 @@ header {
 .dashboardChild{
   flex-basis: 50%;
 }
+
