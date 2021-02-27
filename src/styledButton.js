@@ -2,6 +2,8 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,16 +20,40 @@ const useStyles = makeStyles((theme) => ({
 
 const StyledButton = (props) => {
     const classes = useStyles();
-    const {path,
+    const {type,
+    emailref,
+    passwordref,    
     text} = props
-
-    const handleClick = () => {
-        console.log("it worked!")
+    
+    //todo figure out why the function is being run without click
+    if(type==="signup"){
+        const OnSignUpClick = () => {
+            const email = emailref
+            const password = passwordref
+            console.log(email)
+            console.log(password)
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+              // Signed in 
+              var user = userCredential.user;
+            })
+            .catch((error) => {
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              // ..
+            });
+        }
+    
+        return (
+            <Button onClick={OnSignUpClick} className={classes.root}>{text}</Button>
+        );
+    }
+    else{
+        return (
+            <Button className={classes.root}>{text}</Button>
+        );
     }
 
-    return (
-        <Button onClick={handleClick} className={classes.root}>{text}</Button>
-    );
 }
 
 export default StyledButton;

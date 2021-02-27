@@ -1,3 +1,4 @@
+import React, {useRef, useState} from 'react';
 import logo from './1280px-GameStop.png';
 import Sheet from './Sheet.js';
 import './App.css';
@@ -13,9 +14,8 @@ import LoginReturnButton from './LoginReturnButton.js'
 import StyledButton from './styledButton.js';
 import { ThemeProvider, makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-//import { dark } from '@material-ui/core/styles/createPalette';
-
-
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const theme =createMuiTheme({
   palette: {
@@ -46,6 +46,18 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
 }));
+
+var firebaseConfig = {
+  apiKey: "AIzaSyBVyweb4QBraCJI5D8dHwqKeRKtWJXBUQY",
+  authDomain: "gamestopfinance.firebaseapp.com",
+  projectId: "gamestopfinance",
+  storageBucket: "gamestopfinance.appspot.com",
+  messagingSenderId: "1074133483110",
+  appId: "1:1074133483110:web:99ecca6e20d461794e77a7",
+  measurementId: "G-P80RG0KSJF"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 function App() {
   return (
@@ -81,16 +93,26 @@ function Dashboard() {
 
 function Login() {
   const classes = useStyles();
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleEmailChange = ({ target }) => {
+    setEmail(target.value);
+  };
+  const handlePasswordChange = ({ target }) => {
+    setPassword(target.value);
+  };
+
+
   return (
-    <ThemeProvider theme={theme}>
-      <html>
+    <html>
+      <ThemeProvider theme={theme}>
         <body>
           <header>
             <img src={logo} className="mainLogo" alt="Gamestop Finance logo"></img>
           </header>
           <Grid 
             container
-            spacing={0}
             direction='column'
             justify='center'
             alignItems='center'
@@ -108,18 +130,18 @@ function Login() {
                   </Grid>
                   <Grid item xs={12}>
                     <form className={classes.form} noValidate autoComplete="off">
-                      <Grid container justify='center' direction='column' spacing='2'>
+                      <Grid container justify='center' direction='column' spacing={2}>
                         <Grid item>
-                          <TextField className={classes.textfield} id="username-field" label="Username"/>
+                          <TextField className={classes.textfield} value={email} onChange={handleEmailChange} label="Email"/>
                         </Grid>
                         <Grid item>
-                          <TextField className={classes.textfield} id="password-field" label="Password" />
+                          <TextField className={classes.textfield} value={password} onChange={handlePasswordChange} label="Password" />
                         </Grid>
                         <Grid item>
                           <StyledButton className={classes.dashboardButton} text="Log In" />
                         </Grid>
                         <Grid item>
-                          <LoginReturnButton className={classes.dashboardButton} path="/dashboard" text="dashboard" />
+                          <StyledButton type='signup' emailref={email} passwordref={password} className={classes.dashboardButton} text="Sign Up" />
                         </Grid>
                       </Grid>
                     </form>
@@ -129,9 +151,11 @@ function Login() {
             </Grid>  
           </Grid>
         </body>
-      </html>
-    </ThemeProvider>
+      </ThemeProvider>
+    </html>
   );
 }
+
+
 
 export default App;
