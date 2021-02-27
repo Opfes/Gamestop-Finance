@@ -10,9 +10,10 @@ import {
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import LoginReturnButton from './LoginReturnButton.js'
+import StyledButton from './styledButton.js';
 import { ThemeProvider, makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { dark } from '@material-ui/core/styles/createPalette';
+//import { dark } from '@material-ui/core/styles/createPalette';
 
 
 
@@ -40,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '15px',
     color: 'white',
     position: 'relative',
+  },
+  forms: {
+    width: '100%',
   },
 }));
 
@@ -95,24 +99,30 @@ function Login() {
               <Paper className={classes.paper}>
                 <Grid
                   container
-                  direction='column'>
-                  <Grid item>
+                  direction='row'
+                  wrap='wrap'
+                  alignItems='center'
+                  >
+                  <Grid item xs={12}>
                     <h1>GameStop<br /> Finance</h1>
                   </Grid>
-                  <Grid item>
-                    <form className={classes.root} noValidate autoComplete="off">
-                      <Grid container direction='column'>
+                  <Grid item xs={12}>
+                    <form className={classes.form} noValidate autoComplete="off">
+                      <Grid container justify='center' direction='column' spacing='2'>
                         <Grid item>
-                          <TextField className={classes.textfield} id="standard-basic" label="Username"/>
+                          <TextField className={classes.textfield} id="username-field" label="Username"/>
                         </Grid>
                         <Grid item>
-                          <TextField className={classes.textfield} id="standard-basic" label="Password" />
+                          <TextField className={classes.textfield} id="password-field" label="Password" />
+                        </Grid>
+                        <Grid item>
+                          <StyledButton className={classes.dashboardButton} text="Log In" />
+                        </Grid>
+                        <Grid item>
+                          <LoginReturnButton className={classes.dashboardButton} path="/dashboard" text="dashboard" />
                         </Grid>
                       </Grid>
                     </form>
-                  </Grid>
-                  <Grid item>
-                    <LoginReturnButton className={classes.dashboardButton} path="/dashboard" text="dashboard" />
                   </Grid>
                 </Grid>
               </Paper>
