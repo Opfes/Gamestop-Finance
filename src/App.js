@@ -10,8 +10,7 @@ import {
 } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import LoginReturnButton from './LoginReturnButton.js'
-import StyledButton from './styledButton.js';
+import Button from '@material-ui/core/Button';
 import { ThemeProvider, makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import firebase from 'firebase/app';
@@ -25,6 +24,7 @@ const theme =createMuiTheme({
     type: 'dark',
   },
 });
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,6 +44,16 @@ const useStyles = makeStyles((theme) => ({
   },
   forms: {
     width: '100%',
+  },
+  button: {
+    background: 'linear-gradient(45deg, #a50f15 25%, #fb6a4a 75%)',
+      border: 0,
+      fontSize: 16,
+      borderRadius: 3,
+      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      color: 'white',
+      height: 48,
+      padding: '0 30px',
   },
 }));
 
@@ -92,6 +102,7 @@ function Dashboard() {
 }
 
 function Login() {
+  
   const classes = useStyles();
   
   const [email, setEmail] = useState("");
@@ -103,6 +114,20 @@ function Login() {
     setPassword(target.value);
   };
 
+  const OnSignUpClick = () => {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Signed in 
+      var user = userCredential.user;
+      
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ..
+    });
+  }
+  
 
   return (
     <html>
@@ -135,13 +160,14 @@ function Login() {
                           <TextField className={classes.textfield} value={email} onChange={handleEmailChange} label="Email"/>
                         </Grid>
                         <Grid item>
-                          <TextField className={classes.textfield} value={password} onChange={handlePasswordChange} label="Password" />
+                          <TextField className={classes.textfield} value={password} onChange={handlePasswordChange} type="password" label="Password" />
                         </Grid>
                         <Grid item>
-                          <StyledButton className={classes.dashboardButton} text="Log In" />
+                          <Button className={classes.button}>Log in</Button>
                         </Grid>
                         <Grid item>
-                          <StyledButton type='signup' emailref={email} passwordref={password} className={classes.dashboardButton} text="Sign Up" />
+                          {/*<StyledButton type='signup' emailref={email} passwordref={password} className={classes.dashboardButton} text="Sign Up" /> */}
+                          <Button onClick={OnSignUpClick} className={classes.button}>Sign up</Button>
                         </Grid>
                       </Grid>
                     </form>
