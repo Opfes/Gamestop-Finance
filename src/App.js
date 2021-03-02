@@ -6,7 +6,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useHistory,
 } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -102,7 +103,7 @@ function Dashboard() {
 }
 
 function Login() {
-  
+  let history = useHistory();
   const classes = useStyles();
   
   const [email, setEmail] = useState("");
@@ -119,7 +120,7 @@ function Login() {
     .then((userCredential) => {
       // Signed in 
       var user = userCredential.user;
-      
+      history.push("/dashboard");
     })
     .catch((error) => {
       var errorCode = error.code;
@@ -127,6 +128,21 @@ function Login() {
       // ..
     });
   }
+
+  const Login = () => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // Signed in
+      var user = userCredential.user;
+      history.push("/dashboard");
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+  }
+
+  
   
 
   return (
@@ -163,10 +179,9 @@ function Login() {
                           <TextField className={classes.textfield} value={password} onChange={handlePasswordChange} type="password" label="Password" />
                         </Grid>
                         <Grid item>
-                          <Button className={classes.button}>Log in</Button>
+                          <Button onClick={Login} className={classes.button}>Log in</Button>
                         </Grid>
                         <Grid item>
-                          {/*<StyledButton type='signup' emailref={email} passwordref={password} className={classes.dashboardButton} text="Sign Up" /> */}
                           <Button onClick={OnSignUpClick} className={classes.button}>Sign up</Button>
                         </Grid>
                       </Grid>
