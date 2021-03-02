@@ -72,7 +72,7 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
+  
 function App() {
   return (
     <Router>
@@ -90,6 +90,28 @@ function App() {
   );
 }
 
+function setPersistenceSession() {
+  var email = "...";
+  var password = "...";
+
+  // [START auth_set_persistence_session]
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+    .then(() => {
+      // Existing and future Auth states are now persisted in the current
+      // session only. Closing the window would clear any existing state even
+      // if a user forgets to sign out.
+      // ...
+      // New sign-in will be persisted with session persistence.
+      return firebase.auth().signInWithEmailAndPassword(email, password);
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+  // [END auth_set_persistence_session]
+}
+
 function Dashboard() {
   const classes = useStyles();
   const data=[
@@ -98,6 +120,10 @@ function Dashboard() {
     { x: "Savings", y: 10},
     { x: "401k", y: 30}
   ];
+  
+  var user = firebase.auth().currentUser;
+
+  console.log(user.email)
 
   return (
     <html>
@@ -134,7 +160,7 @@ function Dashboard() {
                   />
                 </Grid>
                 <Grid item xs={12} sm={5}>
-                  <h1>Header</h1>
+                  <h1>{firebase.UserInfo.email}</h1>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -191,7 +217,7 @@ function Login() {
 
   
   
-
+  setPersistenceSession()
   return (
     <html>
       <ThemeProvider theme={theme}>
