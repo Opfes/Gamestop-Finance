@@ -1,6 +1,5 @@
 import React, {useRef, useState} from 'react';
 import logo from './1280px-GameStop.png';
-import Sheet from './Sheet.js';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -16,6 +15,7 @@ import { ThemeProvider, makeStyles, createMuiTheme } from '@material-ui/core/sty
 import TextField from '@material-ui/core/TextField';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { VictoryPie } from 'victory';
 
 const theme =createMuiTheme({
   palette: {
@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
       height: 48,
       padding: '0 30px',
   },
+  dashboardGrid: {
+    padding: '25px',
+  },
 }));
 
 var firebaseConfig = {
@@ -88,15 +91,59 @@ function App() {
 }
 
 function Dashboard() {
+  const classes = useStyles();
+  const data=[
+    { x: "Equity", y: 40},
+    { x: "Bonds", y: 15},
+    { x: "Savings", y: 10},
+    { x: "401k", y: 30}
+  ];
+
   return (
     <html>
       <body>
         <header>
           <img src={logo} className="mainLogo" alt="Gamestop Finance logo"></img>
         </header>
-        <div className="container">
-          <Sheet sheetType="dashboard"/>
-        </div>  
+        <Grid container
+        wrap='wrap'
+        alignContent='center'
+        justify='center'
+        className={classes.dashboardGrid}>
+          <Grid item>
+            <Paper className={classes.paper}>
+              <Grid container
+              wrap='wrap'
+              justify='space-evenly'
+              alignItems="center"
+              >
+                <Grid item xs={12} sm={4}>
+                  <VictoryPie
+                  style={{
+                    labels: {
+                      fill: "white",
+                      font: "wingdings"
+                    }
+                  }}
+                  data={data}
+                  width={600}
+                  colorScale="red"
+                  sortOrder="descending"
+                  padAngle={5}
+                  innerRadius={100}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={5}>
+                  <h1>Header</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>  
       </body>
     </html>
   );
