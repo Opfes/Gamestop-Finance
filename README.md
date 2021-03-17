@@ -8,6 +8,10 @@ Due to login requirements, users must have a Google account, or they must create
 The user enters the GameStop Finance app on the homescreen. They login by selecting a highly formatted button that takes them to a pop up Google login screen. The button is highly formatted to be more streamlined and cohesive with the rest of the site. The login is handled by a Google api.
 The homepage is formatted to be cohesive with the rest of the site, and it gives the users a good indication of what the site will look like. 
 
+At the bottom of the screen, the prompt and button for the user to input their financial information is displayed.
+
+![example button](public/formex.png)
+
 ####User Information 
 ***
 The user information page contains an overview of the user's account and gives a visual representation of what they can do with GameStop Finance. This page contains a graph with the user's provided information with links to various other options for their account. 
