@@ -1,4 +1,5 @@
 import {makeStyles} from '@material-ui/core/styles';
+import { PlayCircleFilledWhite } from '@material-ui/icons';
 
 export const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,6 +33,11 @@ export const useStyles = makeStyles((theme) => ({
     },
     dashboardGrid: {
         padding: '25px',
+    },
+    textField: {
+        color: 'white',
+        
+        margin: '10px',
     },
 }));
 
