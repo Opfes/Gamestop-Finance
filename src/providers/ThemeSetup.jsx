@@ -34,9 +34,8 @@ export const useStyles = makeStyles((theme) => ({
     dashboardGrid: {
         padding: '25px',
     },
-    textField: {
+    dataInputField: {
         color: 'white',
-        
         margin: '10px',
     },
 }));

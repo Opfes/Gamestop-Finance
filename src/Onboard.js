@@ -4,15 +4,15 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import { UserContext } from "./providers/UserProvider";
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import { auth } from './firebase';
 import { useHistory } from "react-router-dom";
 import {useStyles} from './providers/ThemeSetup';
 import { ThemeProvider, makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import {generateUserDocument} from './firebase.js';
 import logo from './1280px-GameStop.png';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
 
 const theme =createMuiTheme({
     palette: {
@@ -23,7 +23,11 @@ const theme =createMuiTheme({
     },
   });
 
+
+
+
 function Onboard(){
+
     let history = useHistory();
     const user = useContext(UserContext);
     const {photoURL, displayName, email} = user;
@@ -36,6 +40,39 @@ function Onboard(){
     }
 
 
+    
+    const [val_401k, setVal_401k] = useState('');
+    const [val_bonds, setVal_bonds] = useState('');
+    const [val_savings, setVal_savings] = useState('');
+    const [val_equity, setVal_equity] = useState('');
+    const [error, setError] = useState(null);
+
+    const userDocumentName = displayName.replace(/ /g, '')
+
+    const  inputFinancesHandler =
+        (event, val_401k, val_bonds, val_savings, val_equity) => {
+            event.preventDefault();
+            generateUserDocument(user, val_401k, val_bonds, val_savings, val_equity)
+        }
+
+    const onChangeHandler = (event) => {
+        const {name, value} = event.currentTarget;
+
+        if(name == 'val401k'){
+            setVal_401k(value);
+        }
+        else if(name == 'valbonds'){
+            setVal_bonds(value);
+        }
+        else if(name == 'valsavings'){
+            setVal_savings(value);
+        }
+        else if(name == 'valequity'){
+            setVal_equity(value);
+        }
+    }
+    
+    
     return (
         <html>
             <ThemeProvider theme={theme}>
@@ -72,25 +109,21 @@ function Onboard(){
                         style={{ minHeight: '80vh' }}>
                         <Grid item>
                             <Paper className={classes.paper}>
-                                <Grid container
-                                wrap='wrap'
-                                justify='space-evenly'
-                                alignItems="center"
-                                >
-                                    <form>
-                                        <Grid container
-                                        direction='column'
-                                        wrap='wrap'
-                                        justify='space-evenly'
-                                        alignItems="center"
-                                        >
-                                            <Grid item><TextField variant='outlined' className={classes.textField} label="Email" /></Grid>
-                                            <Grid item><TextField variant='outlined' className={classes.textField} label="First Name"/></Grid>
-                                            <Grid item><TextField variant='outlined' className={classes.textField} label="Last Name" /></Grid>
-                                            <Grid item><Button className={classes.button}>Submit</Button></Grid>
-                                        </ Grid>    
-                                    </form>
-                                </Grid>
+                                <form>
+                                    <Grid container
+                                    direction='column'
+                                    wrap='wrap'
+                                    justify='space-evenly'
+                                    alignItems="center"
+                                    spacing='2'
+                                    >
+                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="401k Value" value={val_401k} name="val401k" onChange = {(event) => onChangeHandler(event)} /></Grid>
+                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Bonds Value" value={val_bonds} name="valbonds" onChange = {(event) => onChangeHandler(event)}/></Grid>
+                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Savings Value" value={val_savings} name="valsavings" onChange = {(event) => onChangeHandler(event)}/></Grid>
+                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Equity Value" value={val_equity} name="valequity" onChange = {(event) => onChangeHandler(event)}/></Grid>
+                                        <Grid item><Button className={classes.button} onClick={(event) => {inputFinancesHandler(event, val_401k, val_bonds, val_savings, val_equity, val_equity)}}>Submit</Button></Grid>
+                                    </ Grid>    
+                                </form>
                             </Paper>
                         </Grid>
                     </Grid> 
