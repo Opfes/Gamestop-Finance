@@ -11,8 +11,7 @@ import {
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import {makeStyles, createMuiTheme } from '@material-ui/core/styles';
-import {autb} from 'firebase/app';
+import {useStyles} from './providers/ThemeSetup';
 import { VictoryPie } from 'victory';
 import { auth } from './firebase';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -20,54 +19,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { UserContext } from "./providers/UserProvider";
 import {useContext} from 'react';
-
-
-const theme =createMuiTheme({
-    palette: {
-        primary: {
-        main: '#a50f15',
-        },
-        type: 'dark',
-    },
-});
-
-  
-const useStyles = makeStyles((theme) => ({
-    root: {
-        padding:'25px',
-        color: 'white',
-        '& > *': {
-        margin: theme.spacing(1),
-        width: '35ch',
-        padding: '10px',
-        },
-    },
-    paper: {
-        background: 'rgba(0,0,0,0.7)',
-        padding: '15px',
-        color: 'white',
-        position: 'relative',
-    },
-    forms: {
-        width: '100%',
-    },
-    button: {
-        background: 'linear-gradient(45deg, #a50f15 25%, #fb6a4a 75%)',
-        border: 0,
-        fontSize: 16,
-        borderRadius: 3,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'white',
-        height: 48,
-        padding: '0 30px',
-    },
-    dashboardGrid: {
-        padding: '25px',
-    },
-}));
-
-
-
 
 function Dashboard() {
   const classes = useStyles();
@@ -145,6 +96,14 @@ function Dashboard() {
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                   </Grid>
                 </Grid>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper className={classes.paper}>
+                <p>It seems like you're new around here.<br /> Click below to enter your financial information.</p>
+                <Button className={classes.button}>
+                  <Link to="/Onboard" style={{ textDecoration: 'none', color: 'white'}}>Input info</Link>
+                </Button>
               </Paper>
             </Grid>
           </Grid>  

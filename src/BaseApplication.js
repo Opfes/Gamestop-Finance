@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Dashboard from './Dashboard';
 import Login from './Login';
+import Onboard from './Onboard';
 import {useContext} from 'react';
 import UserProvider from "./providers/UserProvider";
 import { UserContext } from "./providers/UserProvider";
@@ -21,6 +22,9 @@ function BaseApplication() {
                 <Switch>
                     <Route exact path="/">
                         <Dashboard />
+                    </Route>
+                    <Route exact path="/onboard">
+                         <Onboard />
                     </Route>
                 </Switch>
             </div>
