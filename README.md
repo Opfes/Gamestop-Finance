@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+####Prerequisites
+***
+Due to login requirements, users must have a Google account, or they must create one upon sign in.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+####Homepage
+***
+The user enters the GameStop Finance app on the homescreen. They login by selecting a highly formatted button that takes them to a pop up Google login screen. The button is highly formatted to be more streamlined and cohesive with the rest of the site. The login is handled by a Google api.
+The homepage is formatted to be cohesive with the rest of the site, and it gives the users a good indication of what the site will look like. 
 
-In the project directory, you can run:
+At the bottom of the screen, the prompt and button for the user to input their financial information is displayed. (see example below)
 
-### `npm start`
+![example button](public/formex.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+####User Information 
+***
+The user information page contains an overview of the user's account and gives a visual representation of what they can do with GameStop Finance. This page contains a graph with the user's provided information with links to various other options for their account. (see example below)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![example graph](public/graphex.png)
 
-### `npm test`
+####Logout 
+***
+The logout button is in the top right of the user information page. It logs the user out of their account and returns them to the homescreen to log back in or possibly login to a different account. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+####Version
+***
+Currently, GameStop Finance is in development of Version 1
 
-### `npm run build`
+####Contributing
+***
+GameStop Finance Team Members:
+*Drew Lindsay
+*Nicholas Grovich
+*William James
+*Aden Oliver
+*Foster Roush
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+####Acknowledgments
+***
+CSCI 387 
