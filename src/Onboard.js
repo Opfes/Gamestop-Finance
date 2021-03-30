@@ -57,7 +57,7 @@ function Onboard(){
         const {name, value} = event.currentTarget;
 
         if(name == 'userinputval'){
-            setVal_401k(value);
+            setuserinput_val(value);
         }
         else if(name == 'dropdownSelectorVal'){
             setdropdown_select(value);
