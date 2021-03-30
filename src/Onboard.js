@@ -59,7 +59,7 @@ function Onboard(){
     const onChangeHandler = (event) => {
         const {name, value} = event.currentTarget;
 
-        if(name == 'val401k'){
+        if(name == 'userinputval'){
             setVal_401k(value);
         }
         else if(name == 'dropdownSelectorVal'){
