@@ -48,7 +48,7 @@ function Onboard(){
     const userDocumentName = displayName.replace(/ /g, '')
 
     const  inputFinancesHandler =
-        (event,  val_equity) => {
+        (event, dropdown_select, val_equity) => {
             event.preventDefault();
             generateUserDocument(user, val_401k, val_bonds, val_savings, val_equity)
         }
