@@ -43,7 +43,6 @@ function Onboard(){
     
     const [val_401k, setVal_401k] = useState('');
     const [val_bonds, setVal_bonds] = useState('');
-    const [val_savings, setVal_savings] = useState('');
     const [dropdown_select, setdropdown_select] = useState('');
     const [error, setError] = useState(null);
 
