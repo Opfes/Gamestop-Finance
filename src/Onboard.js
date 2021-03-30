@@ -128,7 +128,6 @@ function Onboard(){
                                             <MenuItem value={"Savings"}>Savings Account Balance</MenuItem>
                                             <MenuItem value={"Bonds"}>Bonds</MenuItem>
                                         </Select></Grid>
-                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Savings Value" value={val_savings} name="valsavings" onChange = {(event) => onChangeHandler(event)}/></Grid>
                                         <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Equity Value" value={val_equity} name="valequity" onChange = {(event) => onChangeHandler(event)}/></Grid>
                                         <Grid item><Button className={classes.button} onClick={(event) => {inputFinancesHandler(event, val_401k, val_bonds, val_savings, val_equity, val_equity)}}>Submit</Button></Grid>
                                     </ Grid>    
