@@ -37,39 +37,29 @@ function Onboard(){
         auth.signOut();
         history.push('/');
         {/*If anyone finds this comment, I was so proud of this function working, I put my hands in the air when it worked*/}
+        {/* I saw it, pog -nick wuz here lol */}
     }
 
 
     
-    const [val_401k, setVal_401k] = useState('');
-    const [val_bonds, setVal_bonds] = useState('');
-    const [val_savings, setVal_savings] = useState('');
-    const [val_equity, setVal_equity] = useState('');
+    const [userinput_val, setuserinput_val] = useState('');
     const [dropdown_select, setdropdown_select] = useState('');
     const [error, setError] = useState(null);
 
     const userDocumentName = displayName.replace(/ /g, '')
 
     const  inputFinancesHandler =
-        (event, val_401k, val_bonds, val_savings, val_equity) => {
+        (event, dropdown_select, userinput_val) => {
             event.preventDefault();
+            {/* TODO modify function here, and make more targeted functions in firebase file */}
             generateUserDocument(user, val_401k, val_bonds, val_savings, val_equity)
         }
 
     const onChangeHandler = (event) => {
         const {name, value} = event.currentTarget;
 
-        if(name == 'val401k'){
-            setVal_401k(value);
-        }
-        else if(name == 'valbonds'){
-            setVal_bonds(value);
-        }
-        else if(name == 'valsavings'){
-            setVal_savings(value);
-        }
-        else if(name == 'valequity'){
-            setVal_equity(value);
+        if(name == 'userinputval'){
+            setuserinput_val(value);
         }
         else if(name == 'dropdownSelectorVal'){
             setdropdown_select(value);
@@ -128,9 +118,7 @@ function Onboard(){
                                             <MenuItem value={"Savings"}>Savings Account Balance</MenuItem>
                                             <MenuItem value={"Bonds"}>Bonds</MenuItem>
                                         </Select></Grid>
-                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Bonds Value" value={val_bonds} name="valbonds" onChange = {(event) => onChangeHandler(event)}/></Grid>
-                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Savings Value" value={val_savings} name="valsavings" onChange = {(event) => onChangeHandler(event)}/></Grid>
-                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Equity Value" value={val_equity} name="valequity" onChange = {(event) => onChangeHandler(event)}/></Grid>
+                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Value" value={userinput_val} name="userinputval" onChange = {(event) => onChangeHandler(event)}/></Grid>
                                         <Grid item><Button className={classes.button} onClick={(event) => {inputFinancesHandler(event, val_401k, val_bonds, val_savings, val_equity, val_equity)}}>Submit</Button></Grid>
                                     </ Grid>    
                                 </form>
