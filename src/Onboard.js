@@ -51,6 +51,7 @@ function Onboard(){
     const  inputFinancesHandler =
         (event, dropdown_select, userinput_val) => {
             event.preventDefault();
+            {/* TODO modify function here, and make more targeted functions in firebase file */}
             generateUserDocument(user, val_401k, val_bonds, val_savings, val_equity)
         }
 
