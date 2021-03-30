@@ -37,6 +37,7 @@ function Onboard(){
         auth.signOut();
         history.push('/');
         {/*If anyone finds this comment, I was so proud of this function working, I put my hands in the air when it worked*/}
+        {/* I saw it, pog -nick wuz here lol */}
     }
 
 
