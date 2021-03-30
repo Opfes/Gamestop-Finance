@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/auth';
+import "firebase/firestore";
 
 var firebaseConfig = {
     apiKey: "AIzaSyBVyweb4QBraCJI5D8dHwqKeRKtWJXBUQY",
@@ -13,9 +14,47 @@ var firebaseConfig = {
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
 export const signInWithGoogle = () => {
 auth.signInWithPopup(provider);
+};
+
+export const generateUserDocument = async (user, value401k, valuebonds, valuesavings, valueequity) => {
+  if (!user) return;
+  const userRef = firestore.doc(`Users/${user.uid}`);
+  const snapshot = await userRef.get();
+  if (!snapshot.exists) {
+    const { email, displayName, photoURL } = user;
+    try {
+      /* TODO add a try to convert the values to a double, to make sure the user
+      actually input a number and not a string */
+      await userRef.set({
+        displayName,
+        email,
+        value401k,
+        valuebonds,
+        valuesavings,
+        valueequity,
+      });
+    } catch (error) {
+      console.error("Error creating user document", error);
+    }
+  }
+  return getUserDocument(user.uid);
+};
+
+export const getUserDocument = async uid => {
+  if (!uid) return null;
+  try {
+    const userDocument = await firestore.doc(`Users/${uid}`).get();
+    return {
+      uid,
+      ...userDocument.data()
+    };
+  } catch (error) {
+    console.error("Error fetching user", error);
+  }
 };
