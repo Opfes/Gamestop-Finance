@@ -41,7 +41,7 @@ function Onboard(){
 
 
     
-    const [val_401k, setVal_401k] = useState('');
+    const [userinput_val, setuserinput_val] = useState('');
     const [dropdown_select, setdropdown_select] = useState('');
     const [error, setError] = useState(null);
 
