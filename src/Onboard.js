@@ -3,7 +3,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select'
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 import { UserContext } from "./providers/UserProvider";
 import {useContext, useState} from 'react';
 import { auth } from './firebase';
@@ -120,7 +121,9 @@ function Onboard(){
                                     alignItems="center"
                                     spacing='2'
                                     >
-                                        <Grid item><Select variant='outlined' className={classes.dropdownTypeSelect} label="Type of Financial Data" value={dropdown_select} name="dropdownSelectorVal"/></Grid>
+                                        <Grid item><Select variant='outlined' className={classes.dropdownTypeSelect} label="Type of Financial Data" value={dropdown_select} name="dropdownSelectorVal">
+                                            
+                                        </ Select></Grid>
                                         <Grid item><TextField variant='outlined' className={classes.dataInputField} label="401k Value" value={val_401k} name="val401k" onChange = {(event) => onChangeHandler(event)} /></Grid>
                                         <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Bonds Value" value={val_bonds} name="valbonds" onChange = {(event) => onChangeHandler(event)}/></Grid>
                                         <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Savings Value" value={val_savings} name="valsavings" onChange = {(event) => onChangeHandler(event)}/></Grid>
