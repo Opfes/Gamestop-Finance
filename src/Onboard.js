@@ -123,7 +123,7 @@ function Onboard(){
                                     >
                                         <Grid item><Select variant='outlined' className={classes.dropdownTypeSelect} label="Type of Financial Data" value={dropdown_select} name="dropdownSelectorVal">
                                             <MenuItem value=''>None</MenuItem>
-                                            <MenuItem value-={"Equity"}>Equity</MenuItem>
+                                            <MenuItem value={"Equity"}>Equity</MenuItem>
                                         </Select></Grid>
                                         <Grid item><TextField variant='outlined' className={classes.dataInputField} label="401k Value" value={val_401k} name="val401k" onChange = {(event) => onChangeHandler(event)} /></Grid>
                                         <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Bonds Value" value={val_bonds} name="valbonds" onChange = {(event) => onChangeHandler(event)}/></Grid>
