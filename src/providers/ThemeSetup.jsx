@@ -38,5 +38,8 @@ export const useStyles = makeStyles((theme) => ({
         color: 'white',
         margin: '10px',
     },
+    dropdownTypeSelect: {
+
+    },
 }));
 
