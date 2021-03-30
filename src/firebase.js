@@ -27,7 +27,7 @@ export const generateUserDocument = async (user, value401k, valuebonds, valuesav
   const userRef = firestore.doc(`Users/${user.uid}`);
   const snapshot = await userRef.get();
   if (!snapshot.exists) {
-    const { email, displayName, photoURL } = user;
+    const { email, displayName} = user;
     try {
       /* TODO add a try to convert the values to a double, to make sure the user
       actually input a number and not a string */
