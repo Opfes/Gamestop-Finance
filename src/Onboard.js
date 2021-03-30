@@ -62,9 +62,6 @@ function Onboard(){
         if(name == 'val401k'){
             setVal_401k(value);
         }
-        else if(name == 'valbonds'){
-            setVal_bonds(value);
-        }
         else if(name == 'dropdownSelectorVal'){
             setdropdown_select(value);
         }
