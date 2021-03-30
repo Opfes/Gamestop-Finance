@@ -68,9 +68,6 @@ function Onboard(){
         else if(name == 'valsavings'){
             setVal_savings(value);
         }
-        else if(name == 'valequity'){
-            setVal_equity(value);
-        }
         else if(name == 'dropdownSelectorVal'){
             setdropdown_select(value);
         }
