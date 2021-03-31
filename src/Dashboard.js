@@ -101,7 +101,7 @@ function Dashboard() {
             </Grid>
             <Grid item>
               <Paper className={classes.paper}>
-
+                <Survey />
               </Paper>
             </Grid>
             <Grid item>
