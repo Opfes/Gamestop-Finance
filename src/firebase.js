@@ -34,7 +34,6 @@ export const generateUserDocument = async (user, dropdown_select, userinput_val)
       await userRef.set({
         displayName,
         email,
-        value401k,
         valuebonds,
         valuesavings,
         valueequity,
