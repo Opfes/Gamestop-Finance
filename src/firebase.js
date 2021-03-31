@@ -34,8 +34,7 @@ export const generateUserDocument = async (user, dropdown_select, userinput_val)
       await userRef.set({
         displayName,
         email,
-        dropdown_select,
-        userinput_val,
+        dropdown_select:userinput_val,
       });
     } catch (error) {
       console.error("Error creating user document", error);
