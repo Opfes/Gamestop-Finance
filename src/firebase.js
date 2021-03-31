@@ -22,7 +22,7 @@ export const signInWithGoogle = () => {
 auth.signInWithPopup(provider);
 };
 
-export const generateUserDocument = async (user) => {
+export const generateUserDocument = async (user, dropdown_select) => {
   if (!user) return;
   const userRef = firestore.doc(`Users/${user.uid}`);
   const snapshot = await userRef.get();
