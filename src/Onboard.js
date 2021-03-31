@@ -3,6 +3,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
 import { UserContext } from "./providers/UserProvider";
 import {useContext, useState} from 'react';
 import { auth } from './firebase';
@@ -13,6 +15,7 @@ import {generateUserDocument} from './firebase.js';
 import logo from './1280px-GameStop.png';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { FormControl } from '@material-ui/core';
 
 const theme =createMuiTheme({
     palette: {
@@ -22,8 +25,6 @@ const theme =createMuiTheme({
       type: 'dark',
     },
   });
-
-
 
 
 function Onboard(){
@@ -37,38 +38,32 @@ function Onboard(){
         auth.signOut();
         history.push('/');
         {/*If anyone finds this comment, I was so proud of this function working, I put my hands in the air when it worked*/}
+        {/* I saw it, pog -nick wuz here lol */}
     }
 
-
+    const dropdownOptions = ['401k', 'Equity', 'Bonds', 'Savings']
     
-    const [val_401k, setVal_401k] = useState('');
-    const [val_bonds, setVal_bonds] = useState('');
-    const [val_savings, setVal_savings] = useState('');
-    const [val_equity, setVal_equity] = useState('');
+    const [userinput_val, setuserinput_val] = useState('');
+    const [dropdown_select, setdropdown_select] = useState('');
     const [error, setError] = useState(null);
 
     const userDocumentName = displayName.replace(/ /g, '')
 
     const  inputFinancesHandler =
-        (event, val_401k, val_bonds, val_savings, val_equity) => {
+        (event, dropdown_select, userinput_val) => {
             event.preventDefault();
-            generateUserDocument(user, val_401k, val_bonds, val_savings, val_equity)
+            /* TODO modify function here, and make more targeted functions in firebase file */
+            generateUserDocument(user, dropdown_select, userinput_val)
         }
 
     const onChangeHandler = (event) => {
-        const {name, value} = event.currentTarget;
+        const {name, id, value} = event.currentTarget;
 
-        if(name == 'val401k'){
-            setVal_401k(value);
+        if(id == 'userinputval'){
+            setuserinput_val(value);
         }
-        else if(name == 'valbonds'){
-            setVal_bonds(value);
-        }
-        else if(name == 'valsavings'){
-            setVal_savings(value);
-        }
-        else if(name == 'valequity'){
-            setVal_equity(value);
+        else if(name == 'dropdownSelectorVal'){
+            setdropdown_select(value);
         }
     }
     
@@ -117,11 +112,30 @@ function Onboard(){
                                     alignItems="center"
                                     spacing='2'
                                     >
-                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="401k Value" value={val_401k} name="val401k" onChange = {(event) => onChangeHandler(event)} /></Grid>
-                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Bonds Value" value={val_bonds} name="valbonds" onChange = {(event) => onChangeHandler(event)}/></Grid>
-                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Savings Value" value={val_savings} name="valsavings" onChange = {(event) => onChangeHandler(event)}/></Grid>
-                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Equity Value" value={val_equity} name="valequity" onChange = {(event) => onChangeHandler(event)}/></Grid>
-                                        <Grid item><Button className={classes.button} onClick={(event) => {inputFinancesHandler(event, val_401k, val_bonds, val_savings, val_equity, val_equity)}}>Submit</Button></Grid>
+                                        <Grid item>
+                                        <FormControl variant="outlined" className={classes.formControl}>
+                                            <InputLabel htmlFor="outlined-age-native-simple">Age</InputLabel>
+                                            <Select
+                                            native
+                                            value={dropdown_select}
+                                            onChange={(event) => onChangeHandler(event)}
+                                            label="Age"
+                                            id="userinputval"
+                                            inputProps={{
+                                                name: 'age',
+                                                id: 'outlined-age-native-simple',
+                                            }}
+                                            >
+                                            <option aria-label="None" value="" />
+                                            <option value={10}>401k</option>
+                                            <option value={20}>Equity</option>
+                                            <option value={30}>Bonds</option>
+                                            <option value={40}>Savings</option>
+                                            </Select>
+                                        </FormControl>
+                                        </Grid>
+                                        <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Value" value={userinput_val} name="userinputval" onChange = {(event) => onChangeHandler(event)}/></Grid>
+                                        <Grid item><Button className={classes.button} onClick={(event) => {inputFinancesHandler(event, dropdown_select, userinput_val)}}>Submit</Button></Grid>
                                     </ Grid>    
                                 </form>
                             </Paper>

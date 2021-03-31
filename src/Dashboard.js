@@ -98,6 +98,11 @@ function Dashboard() {
                 </Grid>
               </Paper>
             </Grid>
+            {/*<Grid item>
+              <Paper className={classes.paper}>
+                <Survey />
+              </Paper>
+            </Grid>*/}
             <Grid item>
               <Paper className={classes.paper}>
                 <p>It seems like you're new around here.<br /> Click below to enter your financial information.</p>

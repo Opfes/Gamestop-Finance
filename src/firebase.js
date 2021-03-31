@@ -21,23 +21,20 @@ const provider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => {
 auth.signInWithPopup(provider);
 };
-
-export const generateUserDocument = async (user, value401k, valuebonds, valuesavings, valueequity) => {
+//TODO I want to renanme the variables here, they shouldn't match the function call
+export const generateUserDocument = async (user, dropdown_select, userinput_val) => {
   if (!user) return;
   const userRef = firestore.doc(`Users/${user.uid}`);
   const snapshot = await userRef.get();
   if (!snapshot.exists) {
-    const { email, displayName, photoURL } = user;
+    const { email, displayName} = user;
     try {
       /* TODO add a try to convert the values to a double, to make sure the user
       actually input a number and not a string */
       await userRef.set({
         displayName,
         email,
-        value401k,
-        valuebonds,
-        valuesavings,
-        valueequity,
+        dropdown_select:userinput_val,
       });
     } catch (error) {
       console.error("Error creating user document", error);
