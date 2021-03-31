@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
 import { UserContext } from "./providers/UserProvider";
 import {useContext, useState} from 'react';
 import { auth } from './firebase';
@@ -15,6 +15,7 @@ import {generateUserDocument} from './firebase.js';
 import logo from './1280px-GameStop.png';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { FormControl } from '@material-ui/core';
 
 const theme =createMuiTheme({
     palette: {
@@ -40,7 +41,7 @@ function Onboard(){
         {/* I saw it, pog -nick wuz here lol */}
     }
 
-
+    const dropdownOptions = ['401k', 'Equity', 'Bonds', 'Savings']
     
     const [userinput_val, setuserinput_val] = useState('');
     const [dropdown_select, setdropdown_select] = useState('');
@@ -51,14 +52,14 @@ function Onboard(){
     const  inputFinancesHandler =
         (event, dropdown_select, userinput_val) => {
             event.preventDefault();
-            {/* TODO modify function here, and make more targeted functions in firebase file */}
+            /* TODO modify function here, and make more targeted functions in firebase file */
             generateUserDocument(user, dropdown_select, userinput_val)
         }
 
     const onChangeHandler = (event) => {
-        const {name, value} = event.currentTarget;
+        const {name, id, value} = event.currentTarget;
 
-        if(name == 'userinputval'){
+        if(id == 'userinputval'){
             setuserinput_val(value);
         }
         else if(name == 'dropdownSelectorVal'){
@@ -111,13 +112,28 @@ function Onboard(){
                                     alignItems="center"
                                     spacing='2'
                                     >
-                                        <Grid item><Select variant='outlined' className={classes.dropdownTypeSelect} label="Type of Financial Data" value={dropdown_select} name="dropdownSelectorVal">
-                                            <MenuItem value=''>None</MenuItem>
-                                            <MenuItem value="Equity">Equity</MenuItem>
-                                            <MenuItem value="401k">401k</MenuItem>
-                                            <MenuItem value="Savings">Savings Account Balance</MenuItem>
-                                            <MenuItem value="Bonds">Bonds</MenuItem>
-                                        </Select></Grid>
+                                        <Grid item>
+                                        <FormControl variant="outlined" className={classes.formControl}>
+                                            <InputLabel htmlFor="outlined-age-native-simple">Age</InputLabel>
+                                            <Select
+                                            native
+                                            value={dropdown_select}
+                                            onChange={(event) => onChangeHandler(event)}
+                                            label="Age"
+                                            id="userinputval"
+                                            inputProps={{
+                                                name: 'age',
+                                                id: 'outlined-age-native-simple',
+                                            }}
+                                            >
+                                            <option aria-label="None" value="" />
+                                            <option value={10}>401k</option>
+                                            <option value={20}>Equity</option>
+                                            <option value={30}>Bonds</option>
+                                            <option value={40}>Savings</option>
+                                            </Select>
+                                        </FormControl>
+                                        </Grid>
                                         <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Value" value={userinput_val} name="userinputval" onChange = {(event) => onChangeHandler(event)}/></Grid>
                                         <Grid item><Button className={classes.button} onClick={(event) => {inputFinancesHandler(event, dropdown_select, userinput_val)}}>Submit</Button></Grid>
                                     </ Grid>    
