@@ -14,6 +14,7 @@ import Button from '@material-ui/core/Button';
 import {useStyles} from './providers/ThemeSetup';
 import { VictoryPie } from 'victory';
 import { auth } from './firebase';
+import { Survey } from './Survey.js';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Tooltip from '@material-ui/core/Tooltip';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -96,6 +97,11 @@ function Dashboard() {
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                   </Grid>
                 </Grid>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper className={classes.paper}>
+                <Survey />
               </Paper>
             </Grid>
             <Grid item>
