@@ -35,6 +35,7 @@ export const generateUserDocument = async (user, dropdown_select, userinput_val)
         displayName,
         email,
         dropdown_select,
+        userinput_val,
       });
     } catch (error) {
       console.error("Error creating user document", error);
