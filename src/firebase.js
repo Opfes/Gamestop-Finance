@@ -21,7 +21,7 @@ const provider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => {
 auth.signInWithPopup(provider);
 };
-
+//TODO I want to renanme the variables here, they shouldn't match the function call
 export const generateUserDocument = async (user, dropdown_select, userinput_val) => {
   if (!user) return;
   const userRef = firestore.doc(`Users/${user.uid}`);
