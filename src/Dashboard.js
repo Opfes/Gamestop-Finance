@@ -99,8 +99,8 @@ function Dashboard() {
               </Paper>
             </Grid>
             <Grid item>
-              <Paper>
-                
+              <Paper className={classes.paper}>
+
               </Paper>
             </Grid>
             <Grid item>
