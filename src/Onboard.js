@@ -113,10 +113,10 @@ function Onboard(){
                                     >
                                         <Grid item><Select variant='outlined' className={classes.dropdownTypeSelect} label="Type of Financial Data" value={dropdown_select} name="dropdownSelectorVal">
                                             <MenuItem value=''>None</MenuItem>
-                                            <MenuItem value={"Equity"}>Equity</MenuItem>
-                                            <MenuItem value={"401k"}>401k</MenuItem>
-                                            <MenuItem value={"Savings"}>Savings Account Balance</MenuItem>
-                                            <MenuItem value={"Bonds"}>Bonds</MenuItem>
+                                            <MenuItem value="Equity">Equity</MenuItem>
+                                            <MenuItem value="401k">401k</MenuItem>
+                                            <MenuItem value="Savings">Savings Account Balance</MenuItem>
+                                            <MenuItem value="Bonds">Bonds</MenuItem>
                                         </Select></Grid>
                                         <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Value" value={userinput_val} name="userinputval" onChange = {(event) => onChangeHandler(event)}/></Grid>
                                         <Grid item><Button className={classes.button} onClick={(event) => {inputFinancesHandler(event, dropdown_select, userinput_val)}}>Submit</Button></Grid>
