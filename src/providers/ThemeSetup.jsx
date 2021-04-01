@@ -43,5 +43,8 @@ export const useStyles = makeStyles((theme) => ({
         margin: '10px',
         width: '500px',
     },
+    wrappingPaperNotVisible:{
+
+    },
 }));
 
