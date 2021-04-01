@@ -27,7 +27,9 @@ const theme =createMuiTheme({
   },
 });
 
-
+//This will be a menu overlay that is modular for each type of data
+//It will sit on top of the page and allow the user to add data without
+//navigating away from the page.
 
 function AddMenu() {
     let history = useHistory();
