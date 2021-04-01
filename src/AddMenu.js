@@ -40,7 +40,7 @@ function Login() {
   
     
     return (
-      <Paper className={classes.Paper}>
+      <Paper className={classes.overlayMenu}>
 
       </Paper>
     );
