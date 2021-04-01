@@ -1,0 +1,31 @@
+Group Name: Gamestop Finance
+
+March 18 - 25
+- Successfully implement Firebase database.
+- Implement new survey method to get information about the user.
+- Begin organizing dashboard based off of information gathered from the user, and display that information.
+
+March 25 - April 1
+- Create buttons on the dashboard to view specific information about everything listed under V1:
+    a) View balances of multiple accoutns linked to brokerages, banks, credit unions, etc.
+    b) Input bills through different columns for water, power, etc.
+    c) Provide a total statement of charges vs. income for all inputs. 
+    
+April 1 - 8
+- Begin linking accounts from banks, brokerages, and credit unions, etc. to the database.
+- Implement the ability to link/create bills on the app.
+- Review GUI for fluidity and organization up to this point. 
+
+April 8 - 15
+- Implement the total statement of charges vs. income for all inputs. 
+- Aim to finalize all features of V1.  
+- Implement V2 features:
+    a) Allow the user to contact their bank/credit union.
+    b) Allow the user to input expected spendings and income to show how much they have left after bills.
+- Begin testing the already implemented features.
+
+April 15-22
+- Implement V2 features:
+    c) Create method ot modify taxes based on tax bracket of user. 
+    d) Link insurance cost and provider.
+- Final testing / Demo
