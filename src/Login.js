@@ -67,9 +67,6 @@ function Login() {
                       <form className={classes.form} noValidate autoComplete="off">
                         <Grid container justify='center' direction='column' spacing={2}>
                           {/*<Grid item>
-                            <TextField className={classes.textfield} value={email} onChange={handleEmailChange} label="Email"/>
-                          </Grid>
-                          <Grid item>
                             <TextField className={classes.textfield} value={password} onChange={handlePasswordChange} type="password" label="Password" />
                           </Grid>
                           <Grid item>
