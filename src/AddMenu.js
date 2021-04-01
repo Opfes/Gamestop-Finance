@@ -40,7 +40,7 @@ function Login() {
   
     
     return (
-      <Paper className={classes.overlayMenu}>
+      <Paper className={classes.overlayMenuNotVisible}>
         <Grid container
             direction='column'
             wrap='wrap'
