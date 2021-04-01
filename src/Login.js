@@ -66,10 +66,6 @@ function Login() {
                     <Grid item xs={12}>
                       <form className={classes.form} noValidate autoComplete="off">
                         <Grid container justify='center' direction='column' spacing={2}>
-                          {/*
-                          <Grid item>
-                            <Button onClick={Login} className={classes.button}>Log in</Button>
-                          </Grid>*/}
                           <Grid item>
                             <Button onClick={HandleClick} className={classes.button}>Sign in With Google</Button>
                           </Grid>
