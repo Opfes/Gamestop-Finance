@@ -53,6 +53,7 @@ function AddMenu() {
             spacing='2'
         >
             <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Value" value={userinput_val} name="userinputval" onChange = {(event) => onChangeHandler(event)}/></ Grid>
+            <Grid item><Button>Add Data</Button></Grid>
         </Grid>
       </Paper>
     </Paper>
