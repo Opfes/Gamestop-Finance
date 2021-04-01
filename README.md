@@ -14,7 +14,7 @@ At the bottom of the screen, the prompt and button for the user to input their f
 
 ####User Information 
 ***
-The user information page contains an overview of the user's account and gives a visual representation of what they can do using GameStop Finance. This page contains a graph with the user's provided information with links to various other options for their account. (see example below) It also provides the link for users to input their personal information and finances. The form currently asks for 401k value, bonds value, savings value, and equity value.
+The user information page contains an overview of the user's account and gives a visual representation of what they can do using GameStop Finance. This page contains a graph with the user's provided information with links to various other options for their account. (see example below) It also provides the link for users to input their personal information and finances. The form currently asks for 401k value, bonds value, savings value, and equity value. The gathered user information is stored using a Firebase database.
 
 ![example graph](public/graphex.png)
 
