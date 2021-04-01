@@ -40,7 +40,9 @@ function Login() {
   
     
     return (
-      <Paper className={classes.overlayMenuNotVisible}>
+    <Paper className={classes.wrappingPaperNotVisible}>
+        {/* This is gonna be so slick, lololol */}
+      <Paper className={classes.overlayMenu}>
         <Grid container
             direction='column'
             wrap='wrap'
@@ -49,8 +51,9 @@ function Login() {
             spacing='2'
         >
             <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Value" value={userinput_val} name="userinputval" onChange = {(event) => onChangeHandler(event)}/></ Grid>
-        </ Grid>
+        </Grid>
       </Paper>
+    </Paper>
     );
   }
 
