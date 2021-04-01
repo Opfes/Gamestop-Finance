@@ -24,7 +24,7 @@ The logout button is in the top right of the user information page. It logs the 
 
 ####Version
 ***
-Currently, GameStop Finance is in development of Version 1
+Currently, GameStop Finance is in development of Version 1. We hope to implement some Version 2 features.
 
 ####Contributing
 ***
