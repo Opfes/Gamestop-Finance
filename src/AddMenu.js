@@ -29,7 +29,7 @@ const theme =createMuiTheme({
 
 
 
-function Login() {
+function AddMenu() {
     let history = useHistory();
     const classes = useStyles();
     
