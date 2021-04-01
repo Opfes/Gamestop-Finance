@@ -41,7 +41,7 @@ function Login() {
     
     return (
       <Paper className={classes.overlayMenu}>
-
+          <TextField variant='outlined' className={classes.dataInputField} label="Value" value={userinput_val} name="userinputval" onChange = {(event) => onChangeHandler(event)}></TextField>
       </Paper>
     );
   }
