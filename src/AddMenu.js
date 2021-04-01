@@ -40,7 +40,7 @@ function Login() {
   
     
     return (
-      <Paper>
+      <Paper className={classes.Paper}>
 
       </Paper>
     );
