@@ -44,6 +44,9 @@ export const useStyles = makeStyles((theme) => ({
         width: '500px',
     },
     wrappingPaperNotVisible:{
+        width: '0px',
+    },
+    wrappingPaperVisible:{
 
     },
 }));
