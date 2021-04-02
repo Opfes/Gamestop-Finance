@@ -91,7 +91,7 @@ function Dashboard() {
                   <Grid item xs={12} sm={5}>
                     <h1>{displayName}</h1>
                     <p>Welcome to your GameStop Finance homepage. View your personalized financial graph
-                      or input new information below. If you have not yet input any information, the graph
+                      or input new or updated information below. If you have not yet input any information, the graph
                       will display default statistics. 
                     </p>
                   </Grid>
