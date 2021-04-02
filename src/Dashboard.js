@@ -92,7 +92,7 @@ function Dashboard() {
                     <h1>{displayName}</h1>
                     <p>Welcome to your GameStop Finance homepage. View your personalized financial graph
                       or input new or updated information below. If you have not yet input any information, the graph
-                      will display default statistics. 
+                      will display default statistics. Enjoy!
                     </p>
                   </Grid>
                 </Grid>
