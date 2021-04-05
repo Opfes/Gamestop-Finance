@@ -39,6 +39,6 @@ GameStop Finance Team Members:
 
 ####Acknowledgments
 ***
-CSCI 387 
-Weir Hall
-Discord
+-CSCI 387 
+-Weir Hall
+-Discord
