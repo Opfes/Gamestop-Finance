@@ -1,4 +1,5 @@
 ![example button](public/readmelogo.png)
+***
 ####Prerequisites
 ***
 Due to login requirements, users must have a Google account, or they must create one upon sign in.
