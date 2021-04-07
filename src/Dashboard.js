@@ -13,13 +13,14 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import {useStyles} from './providers/ThemeSetup';
 import { VictoryPie } from 'victory';
-import { auth } from './firebase';
+import { auth, getUserDocument } from './firebase';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Tooltip from '@material-ui/core/Tooltip';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { UserContext } from "./providers/UserProvider";
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import AddMenu from './AddMenu';
+import UserDataLoad from './UserDataLoad';
 
 function Dashboard() {
   const classes = useStyles();
@@ -31,8 +32,13 @@ function Dashboard() {
   ];
     
   const user = useContext(UserContext);
-  const {photoURL, displayName, email} = user;
+  const {uid, photoURL, displayName, email} = user;
   
+  //theres something wrong with this call, I don't understand the function
+  const dataDumpster = getUserDocument(user.uid);
+
+  const {databaseEmail} = dataDumpster;
+
     return (
       <html>
         <body>
@@ -117,7 +123,7 @@ function Dashboard() {
             <Grid item xs={12} sm={4}>
               <Paper className={classes.paper}>
                 <h2>Savings</h2>
-                <p>It seems like you're new around here.<br /> Click below to enter your financial information.</p>
+                <p>{databaseEmail}<br /> Click below to enter your financial information.</p>
                 <Button className={classes.button}>Update Info</Button>
               </Paper>
             </Grid>
