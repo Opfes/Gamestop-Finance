@@ -31,18 +31,25 @@ const theme =createMuiTheme({
 //It will sit on top of the page and allow the user to add data without
 //navigating away from the page.
 
-function AddMenu() {
-    let history = useHistory();
+function AddMenu(props /* there needs to be a define thing here that says which type of adder is being used */) {
     const classes = useStyles();
-    
-  
+    const [userinput_val, setuserinput_val] = useState();
+
+    const onChangeHandler = (event) => {
+      const {name, value} = event.currentTarget;
+
+      if(name === 'userinputval'){
+          setuserinput_val(value);
+      }
+  }
+
     const HandleClick = () => {
-      signInWithGoogle();
+      window.alert(userinput_val);
     }
   
     
     return (
-    <Paper className={classes.wrappingPaperNotVisible}>
+    <Paper className={classes.wrappingPaperVisible}>
         {/* This is gonna be so slick, lololol */}
       <Paper className={classes.overlayMenu}>
         <Grid container
@@ -53,7 +60,7 @@ function AddMenu() {
             spacing='2'
         >
             <Grid item><TextField variant='outlined' className={classes.dataInputField} label="Value" value={userinput_val} name="userinputval" onChange = {(event) => onChangeHandler(event)}/></ Grid>
-            <Grid item><Button className={classes.button}>Add Data</Button></Grid>
+            <Grid item><Button className={classes.button} onClick={HandleClick}>Add Data</Button></ Grid>
         </Grid>
       </Paper>
     </Paper>

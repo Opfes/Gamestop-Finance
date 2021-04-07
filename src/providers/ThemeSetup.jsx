@@ -43,12 +43,20 @@ export const useStyles = makeStyles((theme) => ({
         margin: '10px',
         width: '500px',
     },
-    wrappingPaperNotVisible:{
-        width: '0px',
-    },
     wrappingPaperVisible:{
-        width: '100vw',
-        height: '100vh',
+        width:'99.4vw',
+        height: '99vh',
+        background: 'rgba(0, 0, 0, 0.5)',
+        zIndex: 1,
+    },
+    overlayMenu: {
+        background: 'white',
+        position: 'absolute',
+        zIndex: 1,
+        left: '40%',
+        top: '40%',
+        width: '20%',
+        height: '7%',
     },
 }));
 

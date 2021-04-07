@@ -19,10 +19,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { UserContext } from "./providers/UserProvider";
 import {useContext} from 'react';
+import AddMenu from './AddMenu';
 
 function Dashboard() {
   const classes = useStyles();
-  const data=[
+  const dummyData=[
     { x: "Equity", y: 40},
     { x: "Bonds", y: 15},
     { x: "Savings", y: 10},
@@ -60,6 +61,7 @@ function Dashboard() {
               </Grid>
             </Grid>
           </header>
+          
           <Grid container
           wrap='wrap'
           alignContent='center'
@@ -80,7 +82,7 @@ function Dashboard() {
                         font: "wingdings"
                       }
                     }}
-                    data={data}
+                    data={dummyData}
                     width={600}
                     colorScale="red"
                     sortOrder="descending"
@@ -98,17 +100,25 @@ function Dashboard() {
                 </Grid>
               </Paper>
             </Grid>
-            {/*<Grid item>
+            <Grid item xs={12} sm={4}>
               <Paper className={classes.paper}>
-                <Survey />
-              </Paper>
-            </Grid>*/}
-            <Grid item>
-              <Paper className={classes.paper}>
+                <h2>Equity</h2>
                 <p>It seems like you're new around here.<br /> Click below to enter your financial information.</p>
-                <Button className={classes.button}>
-                  <Link to="/Onboard" style={{ textDecoration: 'none', color: 'white'}}>Input info</Link>
-                </Button>
+                <Button className={classes.button}>Update Info</Button>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Paper className={classes.paper}>
+                <h2>Bonds</h2>
+                <p>It seems like you're new around here.<br /> Click below to enter your financial information.</p>
+                <Button className={classes.button}>Update Info</Button>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Paper className={classes.paper}>
+                <h2>Savings</h2>
+                <p>It seems like you're new around here.<br /> Click below to enter your financial information.</p>
+                <Button className={classes.button}>Update Info</Button>
               </Paper>
             </Grid>
           </Grid>  
