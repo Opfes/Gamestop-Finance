@@ -22,7 +22,7 @@ export const signInWithGoogle = () => {
 auth.signInWithPopup(provider);
 };
 //TODO I want to renanme the variables here, they shouldn't match the function call
-export const generateUserDocument = async (user, dropdown_select, userinput_val) => {
+export const generateUserDocument = async (user, email, value401k, valuebonds, valueequity, valuesavings) => {
   if (!user) return;
   const userRef = firestore.doc(`Users/${user.uid}`);
   const snapshot = await userRef.get();
@@ -34,7 +34,10 @@ export const generateUserDocument = async (user, dropdown_select, userinput_val)
       await userRef.set({
         displayName,
         email,
-        dropdown_select:userinput_val,
+        value401k,
+        valuebonds,
+        valueequity,
+        valuesavings,
       });
     } catch (error) {
       console.error("Error creating user document", error);
