@@ -40,12 +40,16 @@ function Dashboard() {
   
   const [dataDumpster, setdataDumpster] = useState();
   //LETS FREAKING GOOOOOOOOOOOOO
-  useEffect(() =>
-    firestore.collection("Users").doc(uid)
-    .onSnapshot((doc) => { 
-        setdataDumpster(doc.data());
-      }),
-  );
+  useEffect(() => {
+    function importDBData() {
+      firestore.collection("Users").doc(uid)
+      .onSnapshot((doc) => { 
+          setdataDumpster(doc.data());
+        })
+      }
+      
+      importDBData();
+  },[uid]);
 
   useEffect(() =>{
     if((dataDumpster && dataDumpster.valuebonds) == null || (dataDumpster && dataDumpster.valuesavings) == null || (dataDumpster && dataDumpster.valueequity) == null) {
